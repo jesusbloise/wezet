@@ -8,6 +8,9 @@ import authRoutes from "./routes/auth";
 import projectsRoutes from "./routes/projects";
 import negotiationsRoutes from "./routes/negotiations";
 import negotiationDetailRoutes from "./routes/negotiationDetail";
+import quotesRoutes from "./routes/quotes";
+import publicQuotesRoutes from "./routes/publicQuotes";
+import dashboardRoutes from "./routes/dashboard";
 
 const app = express();
 
@@ -56,6 +59,9 @@ app.use("/auth", authRoutes);
 app.use("/projects", projectsRoutes);
 app.use("/negotiations", negotiationsRoutes);
 app.use("/negotiations", negotiationDetailRoutes);
+app.use("/", quotesRoutes);          // /projects/:id/quotes, /quotes/:id...
+app.use("/public", publicQuotesRoutes); // /public/quote/:publicId
+app.use("/api/dashboard", dashboardRoutes);
 
 const port = Number(process.env.PORT) || 4000;
 app.listen(port, () => {
